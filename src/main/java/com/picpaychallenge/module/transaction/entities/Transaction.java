@@ -1,13 +1,14 @@
 package com.picpaychallenge.module.transaction.entities;
 
+import com.picpaychallenge.module.user.entities.User;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name = "transactions")
-@Table(name = "transactions")
+@Entity(name = "transaction_records")
+@Table(name = "transaction_records")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,26 +20,24 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private Long sender;
+    private User sender;
 
-    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name = "receiver_id")
-    private Long receiver;
+    private User receiver;
 
     @Column(nullable = false)
-    private BigDecimal value;
+    private BigDecimal amount;
 
     @Column(nullable = false)
     private LocalDateTime timestamp;
 
-    public Transaction(Long sender, Long receiver, BigDecimal value) {
+    public Transaction(User sender, User receiver, BigDecimal amount) {
         this.sender = sender;
         this.receiver = receiver;
-        this.value = value;
+        this.amount = amount;
         this.timestamp = LocalDateTime.now();
     }
 

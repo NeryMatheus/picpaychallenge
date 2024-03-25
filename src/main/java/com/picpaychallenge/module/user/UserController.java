@@ -1,8 +1,7 @@
-package com.picpaychallenge.module.user.controller;
+package com.picpaychallenge.module.user;
 
 import com.picpaychallenge.module.user.dtos.UserDTO;
 import com.picpaychallenge.module.user.entities.User;
-import com.picpaychallenge.module.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
